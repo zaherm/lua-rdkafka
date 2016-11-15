@@ -29,7 +29,8 @@ CFLAGS= -O2 $(WARN) $(INC)
 MYNAME= rdkafka
 MYLIB= $(MYNAME)
 T= $(MYLIB).so
-OBJS= src/l$(MYLIB).o
+OBJS= src/l$(MYLIB).o \
+			src/l$(MYLIB)_conf.o
 
 all: $T
 

@@ -15,12 +15,12 @@ LUALIB_API void luaL_setfuncs (lua_State *L, const luaL_Reg *l, int nup) {
 }
 #endif
 
-LUALIB_API void lrdkafka_setmeta(lua_State *L, const char *name) {
+LUALIB_API void lrd_kafka_setmeta(lua_State *L, const char *name) {
   luaL_getmetatable(L, name);
   lua_setmetatable(L, -2);
 }
 
-LUALIB_API int lrdkafka_createmeta(lua_State *L, const char *name, const luaL_Reg *methods) {
+LUALIB_API int lrd_kafka_createmeta(lua_State *L, const char *name, const luaL_Reg *methods) {
   if (!luaL_newmetatable(L, name)) {
     return 0;
   }
@@ -54,15 +54,25 @@ LUALIB_API int lrd_kafka_version_str(lua_State *L) {
 }
 
 
-static const luaL_Reg lrdkafka_reg[] = {
+static const luaL_Reg lrdkafka_funcs[] = {
   { "version", lrd_kafka_version },
   { "version_str", lrd_kafka_version_str },
   { NULL, NULL }
 };
 
+static const luaL_Reg lrd_kafka_mods[] = {
+  { "conf", lrd_kafka_conf_open },
+  {NULL, NULL}
+};
+
 LUALIB_API int luaopen_rdkafka(lua_State *L) {
   lua_newtable(L);
-  luaL_setfuncs(L, lrdkafka_reg, 0);
+  
+  for (int i = 0; lrd_kafka_mods[i].name; i++) {
+    lrd_kafka_mods[i].func(L);
+  }
+
+  luaL_setfuncs(L, lrdkafka_funcs, 0);
   lua_pushliteral(L, LRDKAFKA_VERSION);
   lua_setfield(L, -2, "_VERSION");
   lua_pushliteral(L, LRDKAFKA_COPYRIGHT);
