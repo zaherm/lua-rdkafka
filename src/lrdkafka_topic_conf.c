@@ -26,38 +26,40 @@ LUALIB_API int lrd_kafka_topic_conf_destroy(lua_State *L) {
   if(tc != NULL && tc->topic_conf != NULL) {
     rd_kafka_topic_conf_destroy(tc->topic_conf);
     tc->topic_conf = NULL;
-   }
-   return 0;
+  }
+  return 0;
 }
 LUALIB_API int lrd_kafka_topic_conf_set(lua_State *L) {
   lrd_kafka_topic_conf_t *tc = lrd_kafka_check_topic_conf(L, 1);
   const char *name = luaL_checkstring(L, 2);
   const char *value = luaL_checkstring(L, 3);
-	char errstr[512];
-  rd_kafka_conf_res_t res = rd_kafka_topic_conf_set(tc->topic_conf, name, value, errstr, sizeof(errstr));
-  lua_pushinteger(L, res);     
+  char errstr[512];
+  rd_kafka_conf_res_t res = rd_kafka_topic_conf_set(tc->topic_conf, name, value,
+                                                    errstr, sizeof(errstr));
+  lua_pushinteger(L, res);
   if(res != RD_KAFKA_CONF_OK) {
-        lua_pushstring(L, errstr);
-    }
-    else {
-        lua_pushnil(L);
-    }
-    return 2;
+    lua_pushstring(L, errstr);
+  }
+  else {
+    lua_pushnil(L);
+  }
+  return 2;
 }
 LUALIB_API int lrd_kafka_topic_conf_get(lua_State *L) {
   lrd_kafka_topic_conf_t *tc = lrd_kafka_check_topic_conf(L, 1);
   const char *name = luaL_checkstring(L, 2);
   char value[512];
   size_t value_len = sizeof(value);
-  rd_kafka_conf_res_t res = rd_kafka_topic_conf_get(tc->topic_conf, name, value, &value_len);
-  lua_pushinteger(L, res);     
+  rd_kafka_conf_res_t res = rd_kafka_topic_conf_get(tc->topic_conf, name,
+                                                    value, &value_len);
+  lua_pushinteger(L, res);
   if(res == RD_KAFKA_CONF_OK) {
-        lua_pushstring(L, value);
-    }
-    else {
-        lua_pushnil(L);
-    }
-    return 2;
+    lua_pushstring(L, value);
+  }
+  else {
+    lua_pushnil(L);
+  }
+  return 2;
 }
 
 LUALIB_API int lrd_kafka_topic_conf_dump(lua_State *L){
@@ -84,7 +86,8 @@ static luaL_Reg lrd_kafka_topic_conf_mod[] = {
 };
 
 LUALIB_API int lrd_kafka_topic_conf_open(lua_State *L) {
-    lrd_kafka_createmeta(L, "topic_conf", lrd_kafka_topic_conf_methods);
-    luaL_setfuncs(L, lrd_kafka_topic_conf_mod, 0);
-    return 0;
+  lrd_kafka_createmeta(L, "topic_conf", lrd_kafka_topic_conf_methods);
+  luaL_setfuncs(L, lrd_kafka_topic_conf_mod, 0);
+  return 0;
 }
+

@@ -46,3 +46,4 @@ void lrd_kafka_assert(lua_State *L, int cond, const char *msg)  {
     luaL_error(L, msg);
   }
 }
+

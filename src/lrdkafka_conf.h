@@ -36,3 +36,4 @@ static const struct luaL_Reg lrd_kafka_conf_reg[] = {
 };
 
 #endif
+

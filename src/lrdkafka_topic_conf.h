@@ -30,3 +30,4 @@ static const struct luaL_Reg lrd_kafka_topic_conf_methods[] = {
 };
 
 #endif
+
