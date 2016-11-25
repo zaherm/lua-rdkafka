@@ -26,11 +26,11 @@ LIB= $(LUA_LIB) $(RDKAFA_LIB)
 WARN= -Wall
 CFLAGS= -O2 $(WARN) $(INC)
 
-MYNAME= rdkafka
-MYLIB= $(MYNAME)
-T= $(MYLIB).so
-OBJS= src/l$(MYLIB).o \
-			src/l$(MYLIB)_conf.o
+LIBNAME= rdkafka
+T= $(LIBNAME).so
+OBJS= src/l$(LIBNAME)_aux.o \
+			src/l$(LIBNAME)_conf.o \
+			src/l$(LIBNAME).o
 
 all: $T
 
