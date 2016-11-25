@@ -24,6 +24,7 @@ static const luaL_Reg lrdkafka_funcs[] = {
 
 static const luaL_Reg lrd_kafka_mods[] = {
   { "conf", lrd_kafka_conf_open },
+  { "topic_conf", lrd_kafka_topic_conf_open },
   {NULL, NULL}
 };
 

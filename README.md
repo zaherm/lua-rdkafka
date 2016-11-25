@@ -22,4 +22,19 @@ Sets conf of *name* (string) to *value* (string).
 Duplicates a conf object. Returns new *conf* object.
 
 #### conf:dump()
-Dups *conf* as a table, both key and value of the table are _strings_.
+Dumps *conf* as a table, both key and value of the table are _strings_.
+
+### rdkafka.topic_conf()
+Create new instance of the *topic_conf*.
+
+#### topic_conf:get(name)
+Get the  value of *name*. Return value is _string_.
+
+#### topic_conf:get(name, value)
+Set *name* (string) to *value* (string).
+
+#### topic_conf:dup()
+Duplicates a topic_conf object. Returns new *topic_conf* object.
+
+#### topic_conf:dump()
+Dumps *topic_conf* as a table, both key and value of the table are _strings_.
