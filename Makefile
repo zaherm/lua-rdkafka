@@ -46,7 +46,7 @@ clean:
 
 tests: $(all-tests)
 
-test/test_%: $T
+test/test_%: clean $T
 	lua $@.lua
 
 test: clean all tests
