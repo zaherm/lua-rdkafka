@@ -29,6 +29,7 @@ LUALIB_API int lrd_kafka_topic_conf_destroy(lua_State *L) {
   }
   return 0;
 }
+
 LUALIB_API int lrd_kafka_topic_conf_set(lua_State *L) {
   lrd_kafka_topic_conf_t *tc = lrd_kafka_check_topic_conf(L, 1);
   const char *name = luaL_checkstring(L, 2);
@@ -45,6 +46,7 @@ LUALIB_API int lrd_kafka_topic_conf_set(lua_State *L) {
   }
   return 2;
 }
+
 LUALIB_API int lrd_kafka_topic_conf_get(lua_State *L) {
   lrd_kafka_topic_conf_t *tc = lrd_kafka_check_topic_conf(L, 1);
   const char *name = luaL_checkstring(L, 2);
