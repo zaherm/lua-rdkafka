@@ -15,8 +15,19 @@
 #define LRDKAFKA_COPYRIGHT "Copyright (C) 2016, Zaher Marzuq"
 #define LRDKAFKA_DESCRIPTION "rdkafka binding for Lua"
 
+LUALIB_API int lrd_kafka_meta(lua_State *L);
 LUALIB_API int lrd_kafka_version(lua_State *L);
 LUALIB_API int lrd_kafka_version_str(lua_State *L);
+LUALIB_API int lrd_kafka_new(lua_State *L);
+
+static const luaL_Reg lrdkafka_reg[] = {
+  { "version", lrd_kafka_version },
+  { "version_str", lrd_kafka_version_str },
+  { "conf", lrd_kafka_conf_new },
+  { "topic_conf", lrd_kafka_topic_conf_new },
+  { "__call", lrd_kafka_new },
+  { NULL, NULL }
+};
 
 #endif
 

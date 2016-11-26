@@ -17,7 +17,7 @@ LUALIB_API int lrd_kafka_topic_conf_set(lua_State *L);
 LUALIB_API int lrd_kafka_topic_conf_get(lua_State *L);
 LUALIB_API int lrd_kafka_topic_conf_dump(lua_State *L);
 LUALIB_API int lrd_kafka_topic_conf_gc(lua_State *L);
-LUALIB_API int lrd_kafka_topic_conf_open(lua_State *L);
+LUALIB_API int lrd_kafka_topic_conf_meta(lua_State *L);
 
 static const struct luaL_Reg lrd_kafka_topic_conf_methods[] = {
   { "destroy", lrd_kafka_topic_conf_destroy },

@@ -105,7 +105,7 @@ static luaL_Reg lrd_kafka_conf_mod[] = {
   { NULL, NULL }
 };
 
-LUALIB_API int lrd_kafka_conf_open(lua_State *L) {
+LUALIB_API int lrd_kafka_conf_meta(lua_State *L) {
   lrd_kafka_createmeta(L, "conf", lrd_kafka_conf_reg);
   luaL_setfuncs(L, lrd_kafka_conf_mod, 0);
   return 0;

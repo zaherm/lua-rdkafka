@@ -81,11 +81,11 @@ LUALIB_API int lrd_kafka_topic_conf_gc(lua_State *L) {
 }
 
 static luaL_Reg lrd_kafka_topic_conf_mod[] = {
-  { "topic_conf", lrd_kafka_topic_conf_new },
+  { "__call", lrd_kafka_topic_conf_new },
   { NULL, NULL }
 };
 
-LUALIB_API int lrd_kafka_topic_conf_open(lua_State *L) {
+LUALIB_API int lrd_kafka_topic_conf_meta(lua_State *L) {
   lrd_kafka_createmeta(L, "topic_conf", lrd_kafka_topic_conf_methods);
   luaL_setfuncs(L, lrd_kafka_topic_conf_mod, 0);
   return 0;
