@@ -24,7 +24,7 @@ LUALIB_API int lrd_kafka_conf_properties_show(lua_State *L);
 LUALIB_API int lrd_kafka_conf_gc(lua_State *L);
 LUALIB_API int lrd_kafka_conf_meta(lua_State *L);
 
-static const struct luaL_Reg lrd_kafka_conf_reg[] = {
+static const struct luaL_Reg lrd_kafka_conf_methods[] = {
   { "destroy", lrd_kafka_conf_destroy },
   { "dup", lrd_kafka_conf_dup },
   { "set", lrd_kafka_conf_set },

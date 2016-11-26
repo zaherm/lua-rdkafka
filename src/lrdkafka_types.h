@@ -18,5 +18,10 @@ typedef struct {
   rd_kafka_queue_t *queue;
 } lrd_kafka_queue_t;
 
+typedef struct {
+  rd_kafka_t *client;
+  lrd_kafka_conf_t *conf;
+} lrd_kafka_client_t;
+
 #endif
 

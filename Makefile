@@ -31,6 +31,7 @@ T= $(LIBNAME).so
 OBJS= src/l$(LIBNAME)_aux.o \
 			src/l$(LIBNAME)_conf.o \
 			src/l$(LIBNAME)_topic_conf.o \
+			src/l$(LIBNAME)_client.o \
 			src/l$(LIBNAME).o
 
 all: $T

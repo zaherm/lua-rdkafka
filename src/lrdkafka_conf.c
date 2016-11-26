@@ -55,11 +55,11 @@ LUALIB_API int lrd_kafka_conf_set_events(lua_State *L) {
 
 LUALIB_API int lrd_kafka_conf_destroy(lua_State *L) {
   lrd_kafka_conf_t *c = lrd_kafka_check_conf(L, 1);
-  if(c!= NULL && c->conf != NULL) {
+  if(c->conf != NULL) {
     rd_kafka_conf_destroy(c->conf);
     c->conf = NULL;
   }
-  return 1;
+  return 0;
 }
 /* rd_kafka_conf_res_t rd_kafka_conf_get (const rd_kafka_conf_t *conf,
    const char *name,
@@ -100,13 +100,8 @@ LUALIB_API int lrd_kafka_conf_gc(lua_State *L) {
   return lrd_kafka_conf_destroy(L);
 }
 
-static luaL_Reg lrd_kafka_conf_mod[] = {
-  { "conf", lrd_kafka_conf_new },
-  { NULL, NULL }
-};
-
 LUALIB_API int lrd_kafka_conf_meta(lua_State *L) {
-  lrd_kafka_createmeta(L, "conf", lrd_kafka_conf_reg);
-  luaL_setfuncs(L, lrd_kafka_conf_mod, 0);
+  lrd_kafka_createmeta(L, "conf", lrd_kafka_conf_methods);
   return 0;
 }
+
